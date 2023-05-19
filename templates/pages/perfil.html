@@ -1,0 +1,47 @@
+<div class="container">
+    <h3></h3>
+    <h1>{{data.ess.saudation()}} {{data.sessions[data.sid]["user"]["nome"]}}</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Informações do usuário</h2>
+            <table class="table">
+                <tr>
+                    <th>Nome:</th>
+                    <td>{{data.sessions[data.sid]["user"]["nome"]}}</td>
+                </tr>
+                <tr>
+                    <th>E-mail:</th>
+                    <td>{{data.sessions[data.sid]["user"]["email"]}}</td>
+                </tr>
+                <tr>
+                    <th>Tipo de perfil:</th>
+                    <td>{{data.sessions[data.sid]["user"]["rank"]}}</td>
+                </tr>
+            </table>
+        <a href="#" class="btn btn-primary">Editar perfil</a>
+        </div>
+        <div class="col-md-6">
+            <h2>Eventos inscritos</h2>
+
+                <p>Nenhum evento encontrado.</p>
+        </div>
+    </div>
+
+
+
+
+
+{% if data.sessions[data.sid]["user"]["rank"] <= '08' %}
+    <h3>Cadastro de palestra</h3>
+
+    <form id="form">
+        <input type="text" id="titulo">
+        <input type="text" id="descricao">
+        <input type="date" id="data">
+        <input type="time" id="duracao">
+    </form>
+
+    <button id="send">Cadastrar</button>
+{% endif %}
+</div>

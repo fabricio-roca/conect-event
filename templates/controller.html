@@ -1,0 +1,11 @@
+{% if data.ess.exists(data.conf.sysPath,"templates/pages/"+data.page+".html") %}
+    {% include "pages/"+data.page+".html" %}
+{% elif data.ess.exists(data.conf.sysPath,"templates/pages/"+data.page+"/"+data.detail+".html") %}
+    {% include "pages/"+data.page+"/"+data.detail+".html" %}
+{% elif data.ess.exists(data.conf.sysPath,"templates/pages/"+data.page+"/"+data.detail+"/"+data.description+".html") %}
+    {% include "pages/"+data.page+"/"+data.detail+"/"+data.description+".html" %}
+{% elif data.ess.exists(data.conf.sysPath,"templates/pages/"+data.page+"/"+data.detail+"/"+data.description+"/"+data.information+".html") %}
+    {% include "pages/"+data.page+"/"+data.detail+"/"+data.description+"/"+data.information+".html" %}
+{% else %}
+    {% include "404.html" %}
+{% endif %}

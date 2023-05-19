@@ -1,0 +1,24 @@
+{
+  "credencials": {
+    "login": false,
+    "senha": ""
+  },
+  "usuarios": [
+    {
+      "ativo": true,
+      "email": "fabricio@taagvx.com",
+      "id": 0,
+      "nome": "Fabricio",
+      "rank": "09",
+      "senha": "123"
+    },
+    {
+      "ativo": true,
+      "email": "teste",
+      "id": 1,
+      "nome": "teste",
+      "rank": "08",
+      "senha": "123"
+    }
+  ]
+}
