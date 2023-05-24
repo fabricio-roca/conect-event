@@ -9,25 +9,25 @@
     <div class="container px-4 py-5">
         <h2 class="pb-2 border-bottom">Eventos disponiveis.</h2>
             <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-            {% for usuario in data.usuarios %}
+            {% for palestra in data.palestras %}
+            <a href="/palestra/{{palestra["unicode"]}}">
                 <div class="col">
                     <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url(/static/img/card02.jpg);">
                         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{usuario["nome"]}}</h3>
+                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{palestra["titulo"]}}</h3>
                             <ul class="d-flex list-unstyled mt-5">
                                 <li class="me-auto">
                                     <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
                                 </li>
                                 <li  class="d-flex align-items-center me-3">
-                                    <svg class="bi me-2" width="1rem" height="1rem" fill="currentColor">
-                                        <img src="/static/img/geo.svg">
-                                    </svg>
-                                    <small>Online</small>
+                                    <iconify-icon icon="ph:map-pin" width="18" style="color: white;"></iconify-icon>
+                                    <small>{{palestra["tipo"]}}</small>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
+            </a>
             {% endfor %}
             </div>
     </div>

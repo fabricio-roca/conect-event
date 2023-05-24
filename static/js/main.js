@@ -24,6 +24,10 @@ jQuery(document).ready(function($)
     $('#send').click(function () {
       send_form('#form', {'method':['add', 'login']}, '/perfil',[])
     })
+  } else if (page == 'palestra') {
+    $('#send').click(function () {
+      send_form('#form', {'method':['add', 'palestra']}, '/perfil',[])
+    })
   }
 
   $('.btnTest').click(function () {

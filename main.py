@@ -43,6 +43,14 @@ class Data:
     def refresh(self,session):
         if self.page == "inicio":
             self.usuarios = self.storage.get("usuarios")
+        elif self.page == "perfil":
+            self.palestras = self.storage.get("palestras")
+        elif self.page == "palestra":
+            self.palestras = self.storage.get("palestras")
+            if self.detail != "":
+                self.error = "Palestra nao encontrada!"
+                for palestra in self.palestras:
+                    if palestra["unicode"] == self.detail: self.error = ""
 
     def listener(self,content):
         try:
@@ -77,20 +85,25 @@ class Data:
                         return(True, "success")
                 return(False, "Email ou Senha incorreto.")
             elif comm == "palestra":
-                if session["user"]["rank"] in self.conf.permissions["palestra"]["rank"]:
-                    palestras = self.storage.get("palestras")
-                nova_palestra = {
-                    "titulo": data["titulo"],
-                    "descricao": data["descricao"],
-                    "data": data["data"],
-                    "duracao": data["duracao"],
-                    "id": len(palestras),
-                    "ativo": True
-                }
-                self.sessions[data["sid"]]["user"] = nova_palestra
-                self.storage.append("palestras", nova_palestra)
+                palestras = self.storage.get("palestras")
+                for palestra in palestras:
+                    if palestra["titulo"]==data["titulo"]:return(False, "Este titulo esta sendo usado")
+                self.storage.append("palestras", {
+                        "titulo": data["titulo"],
+                        "tipo": data["tipo"],
+                        "descricao": data["descricao"],
+                        "data": data["data"],
+                        "duracao": data["duracao"],
+                        'unicode':self.get_unicode(),
+                        "ativo": True
+                    })
             elif comm == "teste":
                 print(data)
             else: return(False,"Comando Desconhecido")
         else: return(False,"acao desconhecida")
         return(True,"Success!")
+
+    def get_unicode(self):
+        unicode = pyess.getKey(8, self.storage.get('unicodes'))
+        self.storage.append('unicodes', unicode)
+        return(unicode)

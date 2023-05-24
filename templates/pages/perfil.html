@@ -1,6 +1,6 @@
 <div class="container">
     <h3></h3>
-    <h1>{{data.ess.saudation()}} {{data.sessions[data.sid]["user"]["nome"]}}</h1>
+    <h1>{{data.ess.saudation()}} {{data.sessions[data.sid]["user"]["nome"].capitalize()}}</h1>
     <hr>
     <div class="row">
         <div class="col-md-6">
@@ -16,7 +16,7 @@
                 </tr>
                 <tr>
                     <th>Tipo de perfil:</th>
-                    <td>{{data.sessions[data.sid]["user"]["rank"]}}</td>
+                    <td>{{data.conf.ranks[data.sessions[data.sid]["user"]["rank"]].capitalize()}}</td>
                 </tr>
             </table>
         <a href="#" class="btn btn-primary">Editar perfil</a>
@@ -30,18 +30,32 @@
 
 
 
+<br>
+<h2>Informações das Palestras</h2>
+<table class="table">
 
-
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Data</th>
+            <th scope="col">Duração</th>
+            <th scope="col">Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for palestra in data.palestras %}
+            <tr>
+                <th scope="row">{{ palestra["unicode"] }}</th>
+                <td>{{ palestra["titulo"] }}</td>
+                <td>{{ palestra["data"] }}</td>
+                <td>{{ palestra["duracao"] }}</td>
+                <td>{{ palestra["tipo"] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% if data.sessions[data.sid]["user"]["rank"] <= '08' %}
-    <h3>Cadastro de palestra</h3>
-
-    <form id="form">
-        <input type="text" id="titulo">
-        <input type="text" id="descricao">
-        <input type="date" id="data">
-        <input type="time" id="duracao">
-    </form>
-
-    <button id="send">Cadastrar</button>
+    <a class="btn btn-primary" href="/palestra">Adicionar Palestra</a>
 {% endif %}
 </div>

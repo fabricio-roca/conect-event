@@ -3,6 +3,31 @@
     "login": false,
     "senha": ""
   },
+  "palestras": [
+    {
+      "ativo": true,
+      "data": "2023-05-22T00:00",
+      "descricao": "aprender sobre google",
+      "duracao": "01:00",
+      "titulo": "Google",
+      "unicode": "5vNqDoVP"
+    },
+    {
+      "ativo": true,
+      "data": "2023-05-24T14:00",
+      "descricao": "Chatgpt",
+      "duracao": "14:00",
+      "tipo": "H\u00edbrido",
+      "titulo": "Chatgpt",
+      "unicode": "lw3Pp3Tt"
+    }
+  ],
+  "unicodes": [
+    "5vNqDoVP",
+    "p5xPfNfe",
+    "xp42FxYg",
+    "lw3Pp3Tt"
+  ],
   "usuarios": [
     {
       "ativo": true,
@@ -18,6 +43,14 @@
       "id": 1,
       "nome": "teste",
       "rank": "08",
+      "senha": "123"
+    },
+    {
+      "ativo": true,
+      "email": "israele",
+      "id": 2,
+      "nome": "israele",
+      "rank": "09",
       "senha": "123"
     }
   ]

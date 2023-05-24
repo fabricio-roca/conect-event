@@ -25,7 +25,7 @@ class Start:
         "05":"financeiro",
         "06":"vendedor",
         "07":"caixa",
-        "08":"fornecedor",
+        "08":"palestrante",
         "09":"usuario",
         "10":"visitante"
     }
