@@ -13,7 +13,7 @@ class Storage:
 				self.encripted = False
 				print('*** ALERTA *** Biblioteca de criptografia não encontrada!')
 		self.connected = self.connect(self.file, login, senha)
-		
+
 	def connect(self, file='', login='root', senha=''):
 		self.file = file
 		if not '.json' in self.file: self.file = self.file+'.json'

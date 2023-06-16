@@ -35,7 +35,9 @@ class Start:
         "entrar":{"rank":["10"]},
         "cadastro":{"rank":["10"]},
         "perfil":{"rank":["00","01","02","03","04","05","06","07","08","09"]},
-        "palestra":{"rank":["00","01","02","03","04","05","06","07","08"]},
+        "palestra":{"rank":["00","01","02","03","04","05","06","07","08","09"],
+            "cadastrar":{"rank":["00","01","02","03","04","05","06","07","08"]}
+        },
         "sair":{"rank":["00","01","02","03","04","05","06","07","08","09"]}
     }
     navigation = [
@@ -46,6 +48,13 @@ class Start:
         {"title": "Perfil", "link": "/perfil","icon":"ph:user","rank":permissions["perfil"]["rank"]},
         {"title": "Sair", "link": "/sair","icon":"ph:user","rank":permissions["sair"]["rank"]}
     ]
+    tipo_palestras = [
+        "Online", "Presencial", "Hibrido"
+    ]
+    duracao_palestras = [
+        5,30,60,90,120,150,180,210,240
+    ]
+    progresso_palestra = 0.75 # e valor em porcetagem do progresso da palestra
     def __init__(self):
         self.requests,self.sessions={},[]
     def allow_request(self, sid):

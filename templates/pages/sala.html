@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>{{data.palestra["titulo"]}}</h1>
+    <div class="video-container">
+        <iframe width="1280" height="720" src="{{data.palestra['link']}}?autoplay=1" frameborder="0" allowfullscreen allow='autoplay'></iframe>
+    </div>
+    <br>
+    <p class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <h6>Descição da Palestra</h6>
+        {{data.palestra["descricao"]}}
+    </p>
+</div>

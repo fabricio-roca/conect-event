@@ -14,6 +14,16 @@ def time(type='str', date=None):
     elif type == 'timestamp': return(dt.timestamp(time('obj', date)))
     elif type == 'obj': return(dt.strptime(date, '%Y-%m-%d %H:%M:%S'))
 
+def dateDif(dates=["%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M:%S"], method='complete'):
+  if len(dates) != 2: return('É necessário ter 2 datas para calcular a diferença')
+  if not method in ['second','minute','hour','day','complete']: return('Defina o método de retorno: "second", "minute", "hour", "day", "complete"')
+  diference = time('obj', dates[0]) - time('obj', dates[1])
+  if method == 'complete': return(diference)
+  elif method == 'second': return(diference.total_seconds())
+  elif method == 'minute': return(diference.total_seconds()/60)
+  elif method == 'hour': return(diference.total_seconds()/3600)
+  elif method == 'day': return(diference.total_seconds()/3600/24)
+
 def dateFormat(date, format):
   obj = dt.strptime(date, '%Y-%m-%d %H:%M:%S')
   return(obj.strftime(format))
@@ -54,11 +64,11 @@ def dateCalc(date='%Y-%m-%d %H:%M:%S', calc=['+','-'], qt=0, method=['second','m
     elif method == 'minute': new = (date - td(minutes=qt)).strftime('%Y-%m-%d %H:%M:%S')
     elif method == 'hour': new = (date - td(hours=qt)).strftime('%Y-%m-%d %H:%M:%S')
   return(new)
-
+  
 class Instance:
   def __init__(self):
     self.list_repeat = {}
-
+  
   def non_repeat(self, string, id='all'):
     if not id in self.list_repeat: self.list_repeat[id] = []
     if string == 'reset': 
@@ -69,7 +79,7 @@ class Instance:
       else:
         self.list_repeat[id].append(string)
         return(True)
-
+  
   def time(self, type='str', date=None):
     if date == None:
       if type == 'str': return(dt.now().strftime("%Y-%m-%d %H:%M:%S"))
@@ -123,3 +133,13 @@ class Instance:
       elif method == 'minute': new = (date - td(minutes=qt)).strftime('%Y-%m-%d %H:%M:%S')
       elif method == 'hour': new = (date - td(hours=qt)).strftime('%Y-%m-%d %H:%M:%S')
     return(new)
+  
+  def dateDif(self, dates=["%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M:%S"], method='complete'):
+    if len(dates) != 2: return('É necessário ter 2 datas para calcular a diferença')
+    if not method in ['second','minute','hour','day','complete']: return('Defina o método de retorno: "second", "minute", "hour", "day", "complete"')
+    diference = self.time('obj', dates[0]) - self.time('obj', dates[1])
+    if method == 'complete': return(diference)
+    elif method == 'second': return(diference.total_seconds())
+    elif method == 'minute': return(diference.total_seconds()/60)
+    elif method == 'hour': return(diference.total_seconds()/3600)
+    elif method == 'day': return(diference.total_seconds()/3600/24)

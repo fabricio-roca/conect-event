@@ -1,33 +1,39 @@
 <div class="container">
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
         <div class="col-md-8 p-lg-6 mx-auto my-5">
-            <h1 class="display-5 fw-normal py-4"> Somos uma plataforma completa de Palestras e Webinar </h1>
+            <h1 class="display-5 fw-bold py-4"> Somos uma plataforma completa de Palestras e Webinar </h1>
             <p class="lead fw-normal">Explore o Calendário de Eventos e Encontre as Melhores Oportunidades de Networking e Aprendizado na Sua Área!</p>
             <a href="#" class="btn btn-outline-secondary">Logo mais!</a>
         </div>
     </div>
     <div class="container px-4 py-5">
         <h2 class="pb-2 border-bottom">Eventos disponiveis.</h2>
-            <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="row row-cols-1 row-cols-sm-5 row-cols-md-3 g-3">
             {% for palestra in data.palestras %}
-            <a href="/palestra/{{palestra["unicode"]}}">
+            {% if data.ess.time("timestamp",palestra["data"]) > data.ess.time("timestamp") %}
+            <a class="" href="/palestra/{{palestra['unicode']}}">
                 <div class="col">
-                    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url(/static/img/card02.jpg);">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{palestra["titulo"]}}</h3>
-                            <ul class="d-flex list-unstyled mt-5">
-                                <li class="me-auto">
-                                    <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-                                </li>
-                                <li  class="d-flex align-items-center me-3">
-                                    <iconify-icon icon="ph:map-pin" width="18" style="color: white;"></iconify-icon>
-                                    <small>{{palestra["tipo"]}}</small>
-                                </li>
-                            </ul>
+                    <div class="card shadow-sm">
+                        <div class="card">
+                            <img src="/static/img/card01.png" class="card-img-top" alt="..." style="width: 100%; height: 100%;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{palestra["titulo"]}}</h5>
+                                <p class="card-text text-truncate" style="max-height: 2rem;">{{palestra["descricao"]}}</p>
+                                <ul class="d-flex list-unstyled mt-5">
+                                    <li class="me-auto">
+                                        <img src="/static/img/avata01.svg" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+                                    </li>
+                                    <li  class="d-flex align-items-center me-3">
+                                        <iconify-icon icon="ph:map-pin" width="18"></iconify-icon>
+                                        <small>{{palestra["tipo"]}}</small>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </a>
+            {% endif %}
             {% endfor %}
             </div>
     </div>

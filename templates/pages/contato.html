@@ -1,3 +1,40 @@
-<div class="container">
-<h1> Area de contato </h1>
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Fale conosco!</h1>
+            <p class="col-lg-10 fs-4">
+                <div class="col-md-8 p-lg-6 mx-auto my-5">
+                    <img src="/static/img/undraw_engineering_team_a7n2.svg" alt="" width="300" height="300">
+                </div>
+            </p>
+            <p class="col-lg-10 fs-4">
+                Nossa missão é capacitar pessoas que buscam se profissionalizar na programação independente do seu momento ou nível de conhecimento.
+            </p>
+            <br>
+        </div>
+
+        <div class="col-md-10 mx-auto col-lg-5 ">
+            <div class="border rounded-3 bg-body-tertiary p-md-3 shadow p-3 mb-5 bg-body-tertiary rounded">
+                <h1 class="">Como podemos ajudar você?</h1>
+                <form id="form" class="p-md-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" id="nome" class="form-control" placeholder="Nome Completo">
+                        <label for="nome"> <iconify-icon icon="ph:envelope-bold" width="18" class="icon-18"></iconify-icon> Nome Completo*</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" id="email" class="form-control" placeholder="Digite seu Email">
+                        <label for="email"><iconify-icon icon="ph:envelope-bold" width="18" class="icon-18"></iconify-icon> Digite seu Email*</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="menssagem" style="height: 150px"></textarea>
+                        <label for="menssagem" class="form-label">Como podemos te ajudar?*</label>
+                    </div>
+                </form>
+                <br>
+                <button id="send" class="w-100 btn btn-lg btn-success">Enviar Mensassagem</button>
+                <p>ou</p>
+                <a href="https://api.whatsapp.com/send?phone=+5515997178367&text=Oi! gostaria de tirar uma duvida" class="w-100 btn btn-lg btn-outline-success"><iconify-icon icon="ph:whatsapp-logo" width="22" class="icon-18"></iconify-icon> Fale agora pelo Whatsapp</a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -3,53 +3,237 @@
     "login": false,
     "senha": ""
   },
+  "menssagem": [],
   "palestras": [
     {
       "ativo": true,
-      "data": "2023-05-22T00:00",
-      "descricao": "aprender sobre google",
-      "duracao": "01:00",
-      "titulo": "Google",
-      "unicode": "5vNqDoVP"
+      "data": "2023-06-09 00:05:00",
+      "descricao": "teste",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/A1BaZr82XJI",
+      "participantes": [
+        0
+      ],
+      "tipo": "Online",
+      "titulo": "teste",
+      "unicode": "DYeiCnUc"
     },
     {
       "ativo": true,
-      "data": "2023-05-24T14:00",
-      "descricao": "Chatgpt",
-      "duracao": "14:00",
-      "tipo": "H\u00edbrido",
-      "titulo": "Chatgpt",
-      "unicode": "lw3Pp3Tt"
+      "data": "2023-06-09 00:35:00",
+      "descricao": "teste",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/A1BaZr82XJI",
+      "participantes": [
+        0
+      ],
+      "tipo": "Presencial",
+      "titulo": "teeeste",
+      "unicode": "5RmmRRgR"
+    },
+    {
+      "ativo": false,
+      "data": "2023-06-09 00:55:00",
+      "descricao": "",
+      "duracao": "30",
+      "link": "https://www.youtube.com/embed/A1BaZr82XJI",
+      "participantes": [
+        0
+      ],
+      "tipo": "Online",
+      "titulo": "teste03",
+      "unicode": "7jLwH9B3"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-09 01:00:00",
+      "descricao": "teste",
+      "duracao": "30",
+      "link": "https://www.youtube.com/embed/A1BaZr82XJI",
+      "participantes": [
+        0
+      ],
+      "tipo": "Hibrido",
+      "titulo": "teste04",
+      "unicode": "KU56SX3I"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-09 01:03:00",
+      "descricao": "teste",
+      "duracao": "30",
+      "link": "https://www.youtube.com/embed/A1BaZr82XJI",
+      "participantes": [
+        0
+      ],
+      "tipo": "Hibrido",
+      "titulo": "teste05",
+      "unicode": "PyqFIbKz"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-09 01:05:00",
+      "descricao": "teste",
+      "duracao": "30",
+      "link": "https://www.youtube.com/embed/A1BaZr82XJI",
+      "participantes": [
+        0,
+        1
+      ],
+      "tipo": "Online",
+      "titulo": "teste06",
+      "unicode": "ryAxQ7U2"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-14 14:17:00",
+      "descricao": "Issasqasad",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/wp4Bq9_S2E4",
+      "palestrante": 0,
+      "participantes": [
+        0
+      ],
+      "tipo": "Online",
+      "titulo": "agora vai",
+      "unicode": "V6vmXHZa"
+    },
+    {
+      "ativo": true,
+      "data": "2023-11-14 15:06:00",
+      "descricao": "aaaaaaaaaaaaaaaaaaaaa",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/wp4Bq9_S2E4",
+      "palestrante": 0,
+      "participantes": [
+        0
+      ],
+      "tipo": "Presencial",
+      "titulo": "ja foi ja",
+      "unicode": "thCiSFaf"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-15 14:48:00",
+      "descricao": "aaaaaaaaaa",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/sQoiM7i5Nqc",
+      "palestrante": 0,
+      "participantes": [],
+      "tipo": "Online",
+      "titulo": "aaaaa",
+      "unicode": "xEvhjF1X"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-15 23:03:00",
+      "descricao": "https://www.youtube.com/embed/G_g5-9ApvJE",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/G_g5-9ApvJE",
+      "palestrante": 0,
+      "participantes": [],
+      "tipo": "Online",
+      "titulo": "httppvJE",
+      "unicode": "8racUs26"
     }
   ],
   "unicodes": [
-    "5vNqDoVP",
-    "p5xPfNfe",
-    "xp42FxYg",
-    "lw3Pp3Tt"
+    "DYeiCnUc",
+    "5RmmRRgR",
+    "7jLwH9B3",
+    "KU56SX3I",
+    "PyqFIbKz",
+    "ryAxQ7U2",
+    "V6vmXHZa",
+    "thCiSFaf",
+    "xEvhjF1X",
+    "8racUs26"
   ],
   "usuarios": [
     {
-      "ativo": true,
-      "email": "fabricio@taagvx.com",
-      "id": 0,
-      "nome": "Fabricio",
-      "rank": "09",
-      "senha": "123"
-    },
-    {
+      "assistido": [
+        {
+          "certificado": false,
+          "entrada": "2023-06-09 00:04:21",
+          "saida": "2023-06-09 00:12:22",
+          "unicode": "DYeiCnUc"
+        },
+        {
+          "certificado": true,
+          "entrada": "2023-06-09 00:32:31",
+          "saida": "2023-06-09 00:39:17",
+          "unicode": "5RmmRRgR"
+        },
+        {
+          "certificado": false,
+          "entrada": "2023-06-09 00:54:27",
+          "saida": "2023-06-09 00:56:33",
+          "unicode": "7jLwH9B3"
+        },
+        {
+          "certificado": false,
+          "entrada": "2023-06-09 01:00:00",
+          "saida": "2023-06-09 00:59:53",
+          "unicode": "KU56SX3I"
+        },
+        {
+          "certificado": false,
+          "entrada": "2023-06-09 01:02:16",
+          "saida": "2023-06-09 01:03:08",
+          "unicode": "PyqFIbKz"
+        },
+        {
+          "certificado": false,
+          "entrada": "2023-06-09 01:05:00",
+          "saida": "2023-06-09 01:04:22",
+          "unicode": "ryAxQ7U2"
+        },
+        {
+          "certificado": true,
+          "entrada": "2023-06-14 14:17:00",
+          "saida": "2023-06-14 14:20:48",
+          "unicode": "V6vmXHZa"
+        },
+        {
+          "certificado": false,
+          "entrada": "2023-11-14 15:06:00",
+          "saida": "2023-06-14 22:15:10",
+          "unicode": "thCiSFaf"
+        }
+      ],
       "ativo": true,
       "email": "teste",
-      "id": 1,
+      "id": 0,
       "nome": "teste",
-      "rank": "08",
+      "palestras": [
+        "DYeiCnUc",
+        "5RmmRRgR",
+        "7jLwH9B3",
+        "KU56SX3I",
+        "PyqFIbKz",
+        "ryAxQ7U2",
+        "V6vmXHZa",
+        "thCiSFaf"
+      ],
+      "rank": "01",
       "senha": "123"
     },
     {
+      "assistido": [
+        {
+          "certificado": false,
+          "entrada": "2023-06-09 01:06:49",
+          "saida": "2023-06-09 01:12:02",
+          "unicode": "ryAxQ7U2"
+        }
+      ],
       "ativo": true,
-      "email": "israele",
-      "id": 2,
-      "nome": "israele",
+      "email": "adm",
+      "id": 1,
+      "nome": "adm",
+      "palestras": [
+        "ryAxQ7U2"
+      ],
       "rank": "09",
       "senha": "123"
     }

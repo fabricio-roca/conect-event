@@ -28,6 +28,37 @@ jQuery(document).ready(function($)
     $('#send').click(function () {
       send_form('#form', {'method':['add', 'palestra']}, '/perfil',[])
     })
+    $('#btnParticipar').click(function() {
+      send_form('#form', {'method':['add', 'participante'], "unicode": $(this).attr('unicode')},"reload")
+    })
+  } else if (page == 'contato'){
+    $('#send').click(function () {
+      send_form('#form', {'method':['add', 'menssagem']}, '/contato',[])
+    })
+  } else if (page == 'sala'){
+    send({"method":['add', 'watch_in'], "palestra": detail})
+    setTimeout(()=>{
+      setInterval(()=>{
+        send({"method":['add', 'watching'], "palestra": detail})
+      }, 5000)
+    }, 5000)
+  } else if (page == 'perfil'){
+    $('#send').click(function () {
+      send_form('#form', {'method':['add', 'palestra']}, '/perfil',[])
+    })
+    $('#btnUsuarios').click(function () {
+      send_form('#form', {'method':['add', 'usuario']}, '/perfil',[])
+    })
+    $(".navLink").click(function (){
+      $(".navLink").each(function(){
+        $(this).removeClass("active")
+      })
+      $(this).addClass("active")
+      $("."+$(this).attr("list")).each(function(){
+        $(this).addClass("d-none")
+      })
+      $("#"+$(this).attr("for")).removeClass("d-none")
+    })
   }
 
   $('.btnTest').click(function () {
@@ -132,7 +163,7 @@ jQuery(document).ready(function($)
       },
       error: function() { alert('Erro interno! Por Favor, Tente novamente mais tarde!') }
     })
-  }		
+  }
 
   function send_form(form, preset={}, action='', allowEmpty=[]) {
     if (has_empty(form, allowEmpty)) {
@@ -156,7 +187,7 @@ jQuery(document).ready(function($)
       },
       error: function() { form_alert(form, false, 'Erro interno! Por Favor, Tente novamente mais tarde!') }
     })
-  }	
+  }
 
   function form_alert(form, success=null, msg='Teste realizado com sucesso!', timer=2500) {
     var am = $('<div class="am"><div class="am-text"></div></div>')
@@ -174,7 +205,7 @@ jQuery(document).ready(function($)
       }, timer);
     }, 200)
   }
-  
+
   function get(form, data={}) {
     var elements = ['input', 'select', 'textarea']
     $(elements).each(function (i, kid) {
@@ -189,7 +220,6 @@ jQuery(document).ready(function($)
     })
     return(data)
   }
-
   function has_empty(form, optional=[]) {
     var empty = false
     var elements = ['input', 'select']
@@ -204,6 +234,7 @@ jQuery(document).ready(function($)
     })
     return(empty)
   }
+
 
   $('#year').html(new Date().getFullYear())
 

@@ -1,61 +1,243 @@
 <div class="container">
-    <h3></h3>
-    <h1>{{data.ess.saudation()}} {{data.sessions[data.sid]["user"]["nome"].capitalize()}}</h1>
-    <hr>
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Informações do usuário</h2>
-            <table class="table">
-                <tr>
-                    <th>Nome:</th>
-                    <td>{{data.sessions[data.sid]["user"]["nome"]}}</td>
-                </tr>
-                <tr>
-                    <th>E-mail:</th>
-                    <td>{{data.sessions[data.sid]["user"]["email"]}}</td>
-                </tr>
-                <tr>
-                    <th>Tipo de perfil:</th>
-                    <td>{{data.conf.ranks[data.sessions[data.sid]["user"]["rank"]].capitalize()}}</td>
-                </tr>
-            </table>
-        <a href="#" class="btn btn-primary">Editar perfil</a>
+    <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+        <img class="me-3 border" src="/static/img/avata01.svg" alt="" width="60" height="60" style="background-color: white; border-radius: 50%;">
+        <div class="lh-1">
+            <h1 class="h4 mb-0 text-white lh-1">{{data.ess.saudation()}}, {{data.sessions[data.sid]["user"]["nome"].capitalize()}} </h1>
+            <small>{{data.conf.ranks[data.sessions[data.sid]["user"]["rank"]].capitalize()}}</small>
         </div>
-        <div class="col-md-6">
-            <h2>Eventos inscritos</h2>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link navLink active" for="informacoes" list="navItem" href="javascript:void(0)">informacoes</a>
+        </li>
+        {% if data.sessions[data.sid]["user"]["rank"] in ['01','08'] %}
+        <li class="nav-item">
+          <a class="nav-link navLink" for="palestras" list="navItem" href="javascript:void(0)">Palestras</a>
+        </li>
+        {% endif %}
+        {% if data.sessions[data.sid]["user"]["rank"] in ['00','01'] %}
+        <li class="nav-item">
+          <a class="nav-link navLink" for="usuarios" list="navItem" href="javascript:void(0)">Usuarios</a>
+        </li>
+        {% endif %}
+      </ul>
+    <div class="mb-3 p-3 bg-body rounded shadow-sm navItem" id="informacoes">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Informações do usuário</h4>
+                <hr>
+                <table class="table">
+                    <tr>
+                        <th>Nome:</th>
+                        <td>{{data.sessions[data.sid]["user"]["nome"]}}</td>
+                    </tr>
+                    <tr>
+                        <th>E-mail:</th>
+                        <td>{{data.sessions[data.sid]["user"]["email"]}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo de perfil:</th>
+                        <td>{{data.conf.ranks[data.sessions[data.sid]["user"]["rank"]].capitalize()}}</td>
+                    </tr>
+                </table>
 
-                <p>Nenhum evento encontrado.</p>
+            </div>
+            <div class="col-md-6">
+                <h4>Eventos inscritos</h4>
+                <hr>
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Duração</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Assistir</th>
+                            <th scope="col">Certificado</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                        {% for assistido in data.sessions[data.sid]["assistidos"] %}
+                            {% for palestra in data.palestras %}
+                                {% if palestra["unicode"] == assistido["unicode"] %}
+                                    <tr>
+                                        <td>{{ palestra["titulo"] }}</td>
+                                        <td>{{ data.ess.dateFormat(palestra["data"], '%d/%m às %H:%M') }}</td>
+                                        <td>{{ palestra["duracao"] }}min</td>
+                                        <td>{{ palestra["tipo"] }}</td>
+                                        {% if data.ess.time("timestamp",data.ess.dateCalc(palestra["data"],'+',palestra["duracao"]|int,"minute")) > data.ess.time("timestamp") %}
+                                        <td class="text-center"><a href="/sala/{{palestra['unicode']}}" style="text-decoration: none;" target="_blank" ><iconify-icon icon="ph:eye" width="18" class="icon-18"></iconify-icon> Assistir</a></td>
+                                        {% else %}
+                                        <td></td>
+                                        {% endif %}
+                                        {% if assistido["certificado"] %}
+                                            <td class="text-center"><a href="{{url_for('static', filename='certificados/'+palestra['titulo']+'_'+data.sessions[data.sid]['user']['nome']+data.sessions[data.sid]['user']['id']|string+'.pdf')}}" style="text-decoration: none;" download ><iconify-icon icon="ph:download-simple-bold" width="18" class="icon-18"></iconify-icon> Emitir</a></td>
+                                        {% else %}
+                                            <td></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            </div>
         </div>
     </div>
 
 
 
-<br>
-<h2>Informações das Palestras</h2>
-<table class="table">
-
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Titulo</th>
-            <th scope="col">Data</th>
-            <th scope="col">Duração</th>
-            <th scope="col">Tipo</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for palestra in data.palestras %}
-            <tr>
-                <th scope="row">{{ palestra["unicode"] }}</th>
-                <td>{{ palestra["titulo"] }}</td>
-                <td>{{ palestra["data"] }}</td>
-                <td>{{ palestra["duracao"] }}</td>
-                <td>{{ palestra["tipo"] }}</td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
 {% if data.sessions[data.sid]["user"]["rank"] <= '08' %}
-    <a class="btn btn-primary" href="/palestra">Adicionar Palestra</a>
+<div class="mb-3 p-3 bg-body rounded shadow-sm navItem d-none" id="palestras">
+    <h4>Informações das Palestras</h4>
+    <a class="btn btn-primary" href="/palestra">Adicionar Palestra OLD</a>
+    <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Adicionar Palestra
+        </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title fs-5" id="staticBackdropLabel">Cadastro de palestra</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+                <form id="form">
+                    <div class="mb-4">
+                        <label for="titulo" class="form-label">Titulo para Palestra</label>
+                        <input type="text" class="form-control" id="titulo" placeholder="Digite um titulo.">
+                        <label for="titulo" class="form-label">Data para Palestra</label>
+                        <input type="datetime-local" class="form-control" id="data">
+
+                        <br>
+                        <h5>Tipo da Palestra:</h5>
+                        <select class="form-select" id="tipo">
+                            <option value="">Selecione ...</option>
+                            {% for opcao in data.conf.tipo_palestras %}
+                                <option value="{{opcao}}">{{opcao}}</option>
+                            {% endfor %}
+                        </select>
+
+                        <label for="descricao" class="form-label">Descreva a sua Palestra</label>
+                        <textarea class="form-control" id="descricao" rows="3"></textarea>
+                        <label for="titulo" class="form-label">Duração da Palestra</label>
+                        <select class="form-select" id="duracao">
+                            <option value="">Selecione ...</option>
+                            {% for opcao in data.conf.duracao_palestras %}
+                                <option value="{{opcao}}">{{opcao}} minutos</option>
+                            {% endfor %}
+                        </select>
+                        <br>
+                        <h5>link da palestra</h5>
+                        <input type="url" class="form-control" id="link" placeholder="Digite o link da palestra.">
+                        <label for="link" class="form-label">Coloque o link aqui.</label>
+                    </div>
+                </form>
+            </div>
+          <div class="modal-footer">
+            <button id="send" class="btn btn-primary">Cadastrar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+        <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Duração</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for palestra in data.palestras %}
+                    {% if palestra["ativo"] == true %}
+                    <tr>
+                        <td>{{ palestra["titulo"] }}</td>
+                        <td>{{ palestra["data"] }}</td>
+                        <td>{{ palestra["duracao"] }}</td>
+                        <td>{{ palestra["tipo"] }}</td>
+                        <td>
+                            <iconify-icon icon="ph:note-pencil" width="18"></iconify-icon>
+                            <iconify-icon icon="ph:eye" width="18"></iconify-icon>
+                            <button id="btnDelete"><iconify-icon icon="ph:trash-bold" width="18"></iconify-icon></button>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+        </table>
+</div>
+
 {% endif %}
+{% if data.sessions[data.sid]["user"]["rank"] == '01' %}
+    <div class="mb-3 p-3 bg-body rounded shadow-sm navItem d-none" id="usuarios">
+        <h4>Informações dos Usuarios</h4>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Adicionar Usuarios
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Usuarios</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" class="p-md-3">
+                        <div class="form-floating mb-3">
+                            <input type="text" id="nome" class="form-control" placeholder="Nome completo">
+                            <label for="nome"><iconify-icon icon="ph:user-plus-bold" width="18" class="icon-18"></iconify-icon> Digite o Nome:</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" id="email" class="form-control" placeholder="name@example.com">
+                            <label for="email"> <iconify-icon icon="ph:envelope-bold" width="18" class="icon-18"></iconify-icon> Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" id="senha" class="form-control" placeholder="Senha">
+                            <label for="senha"><iconify-icon icon="ph:lock-bold" width="18" class="icon-18"></iconify-icon> Senha</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                <button id="btnUsuarios" class="btn btn-success">Cadastrar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Ativo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in data.usuarios %}
+                        <tr>
+                            <th scope="row">{{ usuario["id"] }}</th>
+                            <td>{{ usuario["nome"] }}</td>
+                            <td>{{ usuario["email"] }}</td>
+                            <td>{{ usuario["ativo"] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+{% endif %}
+
 </div>

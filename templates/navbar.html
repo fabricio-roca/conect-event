@@ -1,6 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark container-fluid ">
     <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between m-auto">
+        <div class="container d-flex flex-wrap justify-content-centero">
+            <div class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+                <a href="/inicio" class="d-flex text-decoration-none">
+                <img src="/static/img/logo.png" alt="logo" width="30" height="30">
+                <h6 class="texto-logo-primario mt-2">Evento</h6>
+                <h6 class="texto-logo-secundario mt-2">Conect</h6>
+                </a>
+            </div>
         {% set mostrar_entrar = false %}
         {% set mostrar_cadastro = false %}
         {% for menu in data.conf.navigation %}
@@ -9,10 +16,10 @@
                     <a class="btn btn-outline-light me-2" href="{{ menu["link"] }}">{{ menu["title"] }}</a>
                     {% set mostrar_entrar = true %}
                 {% elif menu['title'] == 'Cadastro' and not mostrar_cadastro %}
-                    <a class="btn btn-warning" href="{{ menu["link"] }}">{{ menu["title"] }}</a>
+                    <a class="btn btn-success" href="{{ menu["link"] }}">{{ menu["title"] }}</a>
                     {% set mostrar_cadastro = true %}
                 {% else %}
-                    <a class="nav-link px-2 text-secondary" href="{{ menu["link"] }}">{{ menu["title"] }}</a>
+                    <a class="nav-link px-2 mt-1 text-secondary" href="{{ menu["link"] }}">{{ menu["title"] }}</a>
                 {% endif %}
             {% endif %}
         {% endfor %}

@@ -1,22 +1,35 @@
-<div class="container">
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
-        <div class="col-md-8 p-lg-6 mx-auto my-5">
-            <h1 class="">Entrar</h1>
-
-            <form id="form">
-                <div class="form-floating">
-                    <input type="email" id="email" class="form-control" placeholder="name@example.com">
-                    <label for="email">Endereco de Email</label>
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5 mt-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3"> Faça seu login na plataforma</h1>
+                <p class="col-lg-10 fs-4">
+                    <div class="col-md-8 p-lg-6 mx-auto my-5">
+                        <img src="/static/img/undraw_sign_up_n6im.svg" alt="" width="300" height="300">
+                    </div>
+                </p>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5 ">
+                <div class="border rounded-3 bg-body-tertiary p-md-3 shadow p-3 mb-5 bg-body-tertiary rounded">
+                    <div class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+                            <img src="/static/img/logo.png" alt="logo" width="50" height="50">
+                            <h4 class="texto-logo-primario mt-2">Evento</h4>
+                            <h5 class="mt-2">Conect</h5>
+                    </div>
+                    <h1 class="">Entrar</h1>
+                    <form id="form" class="p-md-3">
+                        <div class="form-floating mb-3">
+                            <input type="email" id="email" class="form-control" placeholder="name@example.com">
+                            <label for="email"> <iconify-icon icon="ph:envelope-bold" width="18" class="icon-18"></iconify-icon> Endereco de Email</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" id="senha" class="form-control" placeholder="Senha">
+                            <label for="senha"><iconify-icon icon="ph:lock-bold" width="18" class="icon-18"></iconify-icon> Senha</label>
+                        </div>
+                    </form>
+                    <br>
+                    <button id="send" class="w-100 btn btn-lg btn-success">Entrar</button>
+                    <p class="mt-5 mb-3 text-body-secondary text-center"> © 2023</p>
                 </div>
-                <div class="form-floating">
-                    <input type="password" id="senha" class="form-control" placeholder="Senha">
-                    <label for="senha">Senha</label>
-                </div>
-
-            </form>
-            <br>
-            <button id="send" class="w-100 btn btn-lg btn-primary">Entrar</button>
+            </div>
         </div>
-        <p class="mt-5 mb-3 text-body-secondary"> © 2023</p>
-    </div>
 </div>
