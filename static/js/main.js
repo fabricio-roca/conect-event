@@ -47,8 +47,21 @@ jQuery(document).ready(function($)
       send_form('#form', {'method':['add', 'palestra']}, '/perfil',[])
     })
     $('#btnUsuarios').click(function () {
-      send_form('#form', {'method':['add', 'usuario']}, '/perfil',[])
+      send_form('#formUsuario', {'method':['add', 'AddUser']}, 'reload',[])
     })
+    $('.btnDelete').click(function(){
+    send({'method':['edit', 'palestra_ativo'], 'unicode': $(this).attr('for')}, "reload", '#form')
+    })
+    $('.btnEditPalestra').click(function(){
+    send_form('#form-'+$(this).attr('for'), {'method':['edit', 'palestra'], 'unicode': $(this).attr('for')}, "reload")
+    })
+    $('.btnDeleteUsuario').click(function(){
+    send({'method':['edit', 'usuario_ativo'], 'id': $(this).attr('for')}, "reload", '#form')
+    })
+    $('.btnEditUsuario').click(function(){
+    send_form('#form-'+$(this).attr('for'), {'method':['edit', 'editUser'], 'id': $(this).attr('for')}, "reload")
+    })
+
     $(".navLink").click(function (){
       $(".navLink").each(function(){
         $(this).removeClass("active")

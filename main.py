@@ -4,7 +4,10 @@ sys.path.insert(0, os.path.dirname(__file__)+'/static/py')
 import pyjson,pyess
 from datetime import datetime
 from reportlab.lib.pagesizes import letter, landscape
+from reportlab.lib import colors
+from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
+import random
 
 class Data:
     conf = conf.Start()
@@ -83,12 +86,13 @@ class Data:
         return json.dumps({'success':result,'description':description}), 200, {'ContentType':'application/json'}
 
     def run(self,action,comm,data,session):
+
         if action == "add":
             if comm == "user":
                 if session["user"]["rank"] in self.conf.permissions["entrar"]["rank"]:
                     usuarios=self.storage.get("usuarios")
                     for usuario in usuarios:
-                        if usuario["email"]==data["email"]:return(False, "Este email esta sendo usuarios")
+                        if usuario["email"]==data["email"]:return(False, "Este email esta sendo usado")
                     self.sessions[data["sid"]]["user"]={
                         "nome":data["nome"],
                         "email":data["email"],
@@ -100,6 +104,23 @@ class Data:
                         "ativo":True
                     }
                     self.storage.append("usuarios",self.sessions[data["sid"]]["user"])
+                else: return(False, "Voce nao tem permissao para isso.")
+            elif comm == "AddUser":
+                if session["user"]["rank"] in self.conf.permissions["adicionar_usuario"]["rank"]:
+                    usuarios=self.storage.get("usuarios")
+                    for usuario in usuarios:
+                        if usuario["email"]==data["email"]:return(False, "Este email esta sendo usado")
+                    user={
+                        "nome":data["nome"],
+                        "email":data["email"],
+                        "senha":data["senha"],
+                        "rank":data["rank"],
+                        "palestras":[],
+                        "assistido":[],
+                        "id":len(usuarios),
+                        "ativo":True
+                    }
+                    self.storage.append("usuarios",user)
                 else: return(False, "Voce nao tem permissao para isso.")
             elif comm == "login":
                 usuarios=self.storage.get("usuarios")
@@ -196,6 +217,41 @@ class Data:
             elif comm == "teste":
                 print(data)
             else: return(False,"Comando Desconhecido")
+        elif action == "edit":
+            if comm == "palestra_ativo":
+                palestras = self.storage.get("palestras")
+                for palestra in palestras:
+                    if palestra["unicode"] == data["unicode"]:
+                        palestra["ativo"] = palestra["ativo"] == False
+                self.storage.save("palestras",palestras)
+            elif comm == "palestra":
+                palestras = self.storage.get("palestras")
+                for palestra in palestras:
+                    if palestra["unicode"] == data["unicode"]:
+                        palestra["titulo"] = data["titulo"]
+                        palestra["tipo"] = data["tipo"]
+                        palestra["descricao"] = data["descricao"]
+                        palestra["data"] = data["data"].replace("T"," ")+":00"
+                        palestra["duracao"] = data["duracao"]
+                        palestra["link"] = data["link"]
+                self.storage.save("palestras",palestras)
+
+            elif comm == "usuario_ativo":
+                usuarios = self.storage.get("usuarios")
+                for usuario in usuarios:
+                    if usuario["id"] == int(data["id"]):
+                        usuario["ativo"] = usuario["ativo"] == False
+                self.storage.save("usuarios",usuarios)
+
+            elif comm == "editUser":
+                usuarios = self.storage.get("usuarios")
+                for usuario in usuarios:
+                    if usuario["id"] == int(data["id"]):
+                        usuario["nome"] = data["nome"]
+                        usuario["email"] = data["email"]
+                        usuario["rank"] = data["rank"]
+                        usuario["senha"] = data["senha"]
+                self.storage.save("usuarios",usuarios)
         else: return(False,"acao desconhecida")
         return(True,"Success!")
 
@@ -256,7 +312,7 @@ class Data:
         pdf.drawImage(lado_a, -20, -20, width=4*inch, height=3*inch)
         pdf.drawImage(lado_b, 520, 440, width=4*inch, height=3*inch)
 
-        y = 400
+        y = 300
         pdf.setFont("Helvetica", 14)  # Define a fonte e o tamanho
         for linha in linhas:
             pdf.drawString(100, y, linha)

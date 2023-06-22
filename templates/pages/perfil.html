@@ -91,7 +91,7 @@
 {% if data.sessions[data.sid]["user"]["rank"] <= '08' %}
 <div class="mb-3 p-3 bg-body rounded shadow-sm navItem d-none" id="palestras">
     <h4>Informações das Palestras</h4>
-    <a class="btn btn-primary" href="/palestra">Adicionar Palestra OLD</a>
+    <!-- <a class="btn btn-primary" href="/palestra">Adicionar Palestra OLD</a> -->
     <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Adicionar Palestra
@@ -161,13 +161,59 @@
                     {% if palestra["ativo"] == true %}
                     <tr>
                         <td>{{ palestra["titulo"] }}</td>
-                        <td>{{ palestra["data"] }}</td>
-                        <td>{{ palestra["duracao"] }}</td>
+                        <td>{{ data.ess.dateFormat(palestra["data"], '%d/%m às %H:%M') }}</td>
+                        <td>{{ palestra["duracao"] }} minutos</td>
                         <td>{{ palestra["tipo"] }}</td>
                         <td>
-                            <iconify-icon icon="ph:note-pencil" width="18"></iconify-icon>
-                            <iconify-icon icon="ph:eye" width="18"></iconify-icon>
-                            <button id="btnDelete"><iconify-icon icon="ph:trash-bold" width="18"></iconify-icon></button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{palestra['unicode']}}">
+                                <iconify-icon icon="ph:note-pencil" width="18"></iconify-icon> Edit
+                            </button>
+                            <div class="modal fade" id="exampleModal-{{palestra['unicode']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Palestra</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="form-{{palestra['unicode']}}">
+                                            <div class="mb-4">
+                                                <label for="titulo" class="form-label">Titulo para Palestra</label>
+                                                <input type="text" class="form-control" id="titulo-{{palestra['unicode']}}" placeholder="Digite um titulo." value="{{palestra['titulo']}}">
+                                                <label for="titulo" class="form-label">Data para Palestra</label>
+                                                <input type="datetime-local" class="form-control" id="data-{{palestra['unicode']}}" value="{{palestra['data']}}">
+                                                <h5>Tipo da Palestra:</h5>
+                                                <select class="form-select" id="tipo-{{palestra['unicode']}}">
+                                                    <option value="{{palestra['tipo']}}">{{palestra['tipo']}}</option>
+                                                    {% for opcao in data.conf.tipo_palestras %}
+                                                        <option value="{{opcao}}">{{opcao}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <label for="descricao" class="form-label">Descreva a sua Palestra</label>
+                                                <textarea class="form-control" id="descricao-{{palestra['unicode']}}" rows="3">{{palestra['descricao']}}</textarea>
+                                                <label for="titulo" class="form-label">Duração da Palestra</label>
+                                                <select  class="form-select" id="duracao-{{palestra['unicode']}}">
+                                                    <option value="{{palestra['duracao']}}">{{palestra['duracao']}} minutos</option>
+                                                    {% for opcao in data.conf.duracao_palestras %}
+                                                        <option value="{{opcao}}">{{opcao}} minutos</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <h5>link da palestra</h5>
+                                                <input type="url" class="form-control" id="link-{{palestra['unicode']}}" placeholder="Digite o link da palestra." value="{{palestra['link']}}">
+                                                <label for="link" class="form-label">Coloque o link aqui.</label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button class="btn btn-primary btnEditPalestra" for="{{palestra['unicode']}}" class="btn btn-success">Editar</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger btnDelete" for="{{ palestra['unicode'] }}"><iconify-icon icon="ph:trash-bold" width="18">
+                            </iconify-icon> Deletar
+                            </button>
                         </td>
                     </tr>
                     {% endif %}
@@ -193,7 +239,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="form" class="p-md-3">
+                    <form id="formUsuario" class="p-md-3">
                         <div class="form-floating mb-3">
                             <input type="text" id="nome" class="form-control" placeholder="Nome completo">
                             <label for="nome"><iconify-icon icon="ph:user-plus-bold" width="18" class="icon-18"></iconify-icon> Digite o Nome:</label>
@@ -203,13 +249,20 @@
                             <label for="email"> <iconify-icon icon="ph:envelope-bold" width="18" class="icon-18"></iconify-icon> Email</label>
                         </div>
                         <div class="form-floating mb-3">
+                            <select id="rank">
+                                {% for rank in data.conf.ranks.keys() %}
+                                <option value="{{rank}}">{{data.conf.ranks[rank]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-floating mb-3">
                             <input type="password" id="senha" class="form-control" placeholder="Senha">
                             <label for="senha"><iconify-icon icon="ph:lock-bold" width="18" class="icon-18"></iconify-icon> Senha</label>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                <button id="btnUsuarios" class="btn btn-success">Cadastrar</button>
+                <button id="btn btn-primary btnUsuarios" class="btn btn-success">Cadastrar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
@@ -224,16 +277,68 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Email</th>
                         <th scope="col">Ativo</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Acoes</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for usuario in data.usuarios %}
+                    {% if usuario["ativo"] == true %}
                         <tr>
                             <th scope="row">{{ usuario["id"] }}</th>
                             <td>{{ usuario["nome"] }}</td>
                             <td>{{ usuario["email"] }}</td>
                             <td>{{ usuario["ativo"] }}</td>
+                            <td>{{data.conf.ranks[usuario['rank']]}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{usuario['id']}}">
+                                    <iconify-icon icon="ph:note-pencil" width="18"></iconify-icon> Edit
+                                </button>
+                                <div class="modal fade" id="exampleModal-{{usuario['id']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Usuario</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="form-{{usuario['id']}}">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" id="nome-{{usuario['id']}}" class="form-control" placeholder="Nome completo" value="{{usuario['nome']}}">
+                                                    <label for="nome"><iconify-icon icon="ph:user-plus-bold" width="18" class="icon-18"></iconify-icon> Digite o Nome:</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="email" id="email-{{usuario['id']}}" class="form-control" placeholder="name@example.com" value="{{usuario['email']}}">
+                                                    <label for="email"> <iconify-icon icon="ph:envelope-bold" width="18" class="icon-18"></iconify-icon> Email</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <select class="form-select" id="rank-{{usuario['id']}}">
+                                                        <option value="{{usuario['rank']}}">{{data.conf.ranks[usuario['rank']]}}</option>
+                                                        {% for rank in data.conf.ranks.keys() %}
+                                                        <option value="{{rank}}">{{data.conf.ranks[rank]}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <label for="rank-{{usuario['id']}}"> <iconify-icon icon="ph:user-list-bold" width="18" class="icon-18"></iconify-icon> Cargo</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="password" id="senha-{{usuario['id']}}" class="form-control" placeholder="Senha" value="{{usuario['senha']}}">
+                                                    <label for="senha"><iconify-icon icon="ph:lock-bold" width="18" class="icon-18"></iconify-icon> Senha</label>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button class="btn btn-primary btnEditUsuario" for="{{usuario['id']}}" class="btn btn-success">Editar</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-danger btnDeleteUsuario" for="{{usuario['id']}}">
+                                    <iconify-icon icon="ph:trash-bold" width="18"></iconify-icon>Deletar
+                                </button>
+                            </td>
                         </tr>
+                    {% endif %}
                     {% endfor %}
                 </tbody>
             </table>

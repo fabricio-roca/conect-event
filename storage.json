@@ -6,7 +6,7 @@
   "menssagem": [],
   "palestras": [
     {
-      "ativo": true,
+      "ativo": false,
       "data": "2023-06-09 00:05:00",
       "descricao": "teste",
       "duracao": "5",
@@ -19,7 +19,7 @@
       "unicode": "DYeiCnUc"
     },
     {
-      "ativo": true,
+      "ativo": false,
       "data": "2023-06-09 00:35:00",
       "descricao": "teste",
       "duracao": "5",
@@ -45,23 +45,23 @@
       "unicode": "7jLwH9B3"
     },
     {
-      "ativo": true,
-      "data": "2023-06-09 01:00:00",
+      "ativo": false,
+      "data": "2023-06-11 01:00:00",
       "descricao": "teste",
       "duracao": "30",
       "link": "https://www.youtube.com/embed/A1BaZr82XJI",
       "participantes": [
         0
       ],
-      "tipo": "Hibrido",
-      "titulo": "teste04",
+      "tipo": "Online",
+      "titulo": "teste05",
       "unicode": "KU56SX3I"
     },
     {
-      "ativo": true,
+      "ativo": false,
       "data": "2023-06-09 01:03:00",
       "descricao": "teste",
-      "duracao": "30",
+      "duracao": "5",
       "link": "https://www.youtube.com/embed/A1BaZr82XJI",
       "participantes": [
         0
@@ -71,7 +71,7 @@
       "unicode": "PyqFIbKz"
     },
     {
-      "ativo": true,
+      "ativo": false,
       "data": "2023-06-09 01:05:00",
       "descricao": "teste",
       "duracao": "30",
@@ -85,7 +85,7 @@
       "unicode": "ryAxQ7U2"
     },
     {
-      "ativo": true,
+      "ativo": false,
       "data": "2023-06-14 14:17:00",
       "descricao": "Issasqasad",
       "duracao": "5",
@@ -99,21 +99,23 @@
       "unicode": "V6vmXHZa"
     },
     {
-      "ativo": true,
+      "ativo": false,
       "data": "2023-11-14 15:06:00",
-      "descricao": "aaaaaaaaaaaaaaaaaaaaa",
+      "descricao": "Curso de C++",
       "duracao": "5",
       "link": "https://www.youtube.com/embed/wp4Bq9_S2E4",
       "palestrante": 0,
       "participantes": [
-        0
+        0,
+        2,
+        5
       ],
       "tipo": "Presencial",
-      "titulo": "ja foi ja",
+      "titulo": "Curso de C++",
       "unicode": "thCiSFaf"
     },
     {
-      "ativo": true,
+      "ativo": false,
       "data": "2023-06-15 14:48:00",
       "descricao": "aaaaaaaaaa",
       "duracao": "5",
@@ -125,7 +127,7 @@
       "unicode": "xEvhjF1X"
     },
     {
-      "ativo": true,
+      "ativo": false,
       "data": "2023-06-15 23:03:00",
       "descricao": "https://www.youtube.com/embed/G_g5-9ApvJE",
       "duracao": "5",
@@ -135,6 +137,115 @@
       "tipo": "Online",
       "titulo": "httppvJE",
       "unicode": "8racUs26"
+    },
+    {
+      "ativo": false,
+      "data": "2023-06-16 10:30:00",
+      "descricao": "asdasasdasdas",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/wQw_NzvUgBg",
+      "palestrante": 0,
+      "participantes": [],
+      "tipo": "Presencial",
+      "titulo": "asas",
+      "unicode": "z44X33PJ"
+    },
+    {
+      "ativo": false,
+      "data": "2023-06-16 15:00:00",
+      "descricao": "aaaaaaaaaaaaaaaaaaaaaa",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/_5zov3AJioE",
+      "palestrante": 0,
+      "participantes": [],
+      "tipo": "Presencial",
+      "titulo": "Html e css",
+      "unicode": "YWbTnCly"
+    },
+    {
+      "ativo": false,
+      "data": "2023-06-16 16:01:00",
+      "descricao": "aaaaaaaaaaaaaaaaaa",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/_5zov3AJioE",
+      "palestrante": 0,
+      "participantes": [
+        3
+      ],
+      "tipo": "Presencial",
+      "titulo": "html e css",
+      "unicode": "v4D42Mua"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-16 16:09:00",
+      "descricao": "import random",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/_5zov3AJioE",
+      "palestrante": 0,
+      "participantes": [
+        3
+      ],
+      "tipo": "Presencial",
+      "titulo": "photoshop",
+      "unicode": "BXXwkVZK"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-16 16:16:00",
+      "descricao": "aaaaaaaaaaaaaaaaaa",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/8F5Jqhd3Nu0",
+      "palestrante": 0,
+      "participantes": [
+        3
+      ],
+      "tipo": "Online",
+      "titulo": "visual studio 2023",
+      "unicode": "2M6L3ClX"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-16 20:17:00",
+      "descricao": "Curso de Javascript",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/Ptbk2af68e8",
+      "palestrante": 0,
+      "participantes": [
+        2
+      ],
+      "tipo": "Hibrido",
+      "titulo": "Javascript",
+      "unicode": "wLBXlmVo"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-16 21:27:00",
+      "descricao": "Curso basico de Programa\u00e7\u00e3o",
+      "duracao": "240",
+      "link": "https://www.youtube.com/embed/iF2MdbrTiBM",
+      "palestrante": 0,
+      "participantes": [
+        0,
+        4
+      ],
+      "tipo": "Hibrido",
+      "titulo": "Logica de Programa\u00e7\u00e3o",
+      "unicode": "xwwVKWfW"
+    },
+    {
+      "ativo": true,
+      "data": "2023-06-22 12:46:00",
+      "descricao": "um teste ",
+      "duracao": "5",
+      "link": "https://www.youtube.com/embed/QIGbgUY1CcM",
+      "palestrante": 0,
+      "participantes": [
+        0
+      ],
+      "tipo": "Online",
+      "titulo": "qualquercoisa",
+      "unicode": "TQEiMA2m"
     }
   ],
   "unicodes": [
@@ -147,7 +258,15 @@
     "V6vmXHZa",
     "thCiSFaf",
     "xEvhjF1X",
-    "8racUs26"
+    "8racUs26",
+    "z44X33PJ",
+    "YWbTnCly",
+    "v4D42Mua",
+    "BXXwkVZK",
+    "2M6L3ClX",
+    "wLBXlmVo",
+    "xwwVKWfW",
+    "TQEiMA2m"
   ],
   "usuarios": [
     {
@@ -199,12 +318,24 @@
           "entrada": "2023-11-14 15:06:00",
           "saida": "2023-06-14 22:15:10",
           "unicode": "thCiSFaf"
+        },
+        {
+          "certificado": false,
+          "entrada": "2023-06-16 21:27:00",
+          "saida": "2023-06-16 20:29:03",
+          "unicode": "xwwVKWfW"
+        },
+        {
+          "certificado": false,
+          "entrada": "2023-06-22 12:46:00",
+          "saida": "2023-06-22 12:47:50",
+          "unicode": "TQEiMA2m"
         }
       ],
       "ativo": true,
-      "email": "teste",
+      "email": "diretor",
       "id": 0,
-      "nome": "teste",
+      "nome": "diretor",
       "palestras": [
         "DYeiCnUc",
         "5RmmRRgR",
@@ -213,7 +344,9 @@
         "PyqFIbKz",
         "ryAxQ7U2",
         "V6vmXHZa",
-        "thCiSFaf"
+        "thCiSFaf",
+        "xwwVKWfW",
+        "TQEiMA2m"
       ],
       "rank": "01",
       "senha": "123"
@@ -234,7 +367,104 @@
       "palestras": [
         "ryAxQ7U2"
       ],
+      "rank": "08",
+      "senha": "123"
+    },
+    {
+      "assistido": [
+        {
+          "certificado": true,
+          "entrada": "2023-06-16 20:17:00",
+          "saida": "2023-06-16 20:20:47",
+          "unicode": "wLBXlmVo"
+        },
+        {
+          "certificado": false,
+          "entrada": "2023-11-14 15:06:00",
+          "saida": "",
+          "unicode": "thCiSFaf"
+        }
+      ],
+      "ativo": true,
+      "email": "aluno",
+      "id": 2,
+      "nome": "aluno",
+      "palestras": [
+        "wLBXlmVo",
+        "thCiSFaf"
+      ],
       "rank": "09",
+      "senha": "123"
+    },
+    {
+      "assistido": [
+        {
+          "certificado": false,
+          "entrada": "2023-06-16 16:01:00",
+          "saida": "2023-06-16 16:04:41",
+          "unicode": "v4D42Mua"
+        },
+        {
+          "certificado": false,
+          "entrada": "2023-06-16 16:09:00",
+          "saida": "2023-06-16 16:12:44",
+          "unicode": "BXXwkVZK"
+        },
+        {
+          "certificado": true,
+          "entrada": "2023-06-16 16:16:00",
+          "saida": "2023-06-16 16:19:46",
+          "unicode": "2M6L3ClX"
+        }
+      ],
+      "ativo": false,
+      "email": "aluno",
+      "id": 3,
+      "nome": "aluno",
+      "palestras": [
+        "v4D42Mua",
+        "BXXwkVZK",
+        "2M6L3ClX"
+      ],
+      "rank": "09",
+      "senha": "123"
+    },
+    {
+      "assistido": [
+        {
+          "certificado": false,
+          "entrada": "2023-06-16 21:27:00",
+          "saida": "2023-06-16 20:49:53",
+          "unicode": "xwwVKWfW"
+        }
+      ],
+      "ativo": false,
+      "email": "eduardo@athon.com",
+      "id": 4,
+      "nome": "eduardo",
+      "palestras": [
+        "xwwVKWfW"
+      ],
+      "rank": "08",
+      "senha": "123"
+    },
+    {
+      "assistido": [
+        {
+          "certificado": false,
+          "entrada": "2023-11-14 15:06:00",
+          "saida": "2023-06-22 12:41:49",
+          "unicode": "thCiSFaf"
+        }
+      ],
+      "ativo": true,
+      "email": "valdoni@outlook.com",
+      "id": 5,
+      "nome": "valdoni",
+      "palestras": [
+        "thCiSFaf"
+      ],
+      "rank": "01",
       "senha": "123"
     }
   ]
